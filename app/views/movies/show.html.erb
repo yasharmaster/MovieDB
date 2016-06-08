@@ -1,8 +1,14 @@
 <h2><%= @movie.title %></h2>
-<h3><%= @movie.category.name %></h3>
-<h3><%= @movie.release_date.to_formatted_s(:long) %></h3>
-<h3><%= @movie.director %></h3>
-<h4><%= @movie.description %></h4>
+
+<div class="row">
+    <h4 class="col-md-4"><strong>Category : </strong><%= @movie.category.name %></h4>
+    <h4 class="col-md-4"><strong>Released on </strong><%= @movie.release_date.to_formatted_s(:long) %></h4>
+</div>
+
+<h4><strong>Directed by </strong><%= @movie.director %></h4>
+
+
+<p><%= @movie.description %></p>
 
 <div class="links btn-group">
     <% if user_signed_in? %>
