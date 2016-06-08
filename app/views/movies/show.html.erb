@@ -3,6 +3,12 @@
 <h3><%= @movie.director %></h3>
 <h4><%= @movie.description %></h4>
 
-<%= link_to "Back", root_path %>
-<%= link_to "Edit", edit_movie_path(@movie) %>
-<%= link_to "Delete", movie_path(@movie), method: :delete, data: { confirm: "Are you sure?" } %>
+<div class="links btn-group">
+    <% if user_signed_in? %>
+        <%# Nested if's because if someone has not signed in, current_user.id will be nil and it will throw an error %>
+        <% if @movie.user_id == current_user.id %>
+            <%= link_to "Edit", edit_movie_path(@movie), class: "btn btn-primary" %>
+            <%= link_to "Delete", movie_path(@movie), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+        <% end %>
+    <% end %>
+</div>
