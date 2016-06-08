@@ -2,6 +2,8 @@
   <%= f.input :title, label: "Movie's Name" %>
   <%= f.input :description %>
   <%= f.input :director, label: "Director's Name" %>
-  <%= f.input :release_date %>
+  <%= f.input :release_date, start_year: Date.today.year - 90,
+                              end_year: Date.today.year + 2,
+                              order: [:day, :month, :year] %>
   <%= f.button :submit %>
 <% end %>
