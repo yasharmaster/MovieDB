@@ -8,6 +8,11 @@
         <div class="movie-info">
             <h2 class="movie-title"><%= @movie.title %></h2>
             <h3 class="movie-category"><span class="label label-primary"><%= @movie.category.name %></span></h3>
+            
+            <h4 class="avg-rating">Average Rating</h4>
+            <div class="average-review-rating" data-score="<%= @average_review %>"></div>
+            <span class="number-of-reviews">From <%= @movie.reviews.count %> reviews.</span>
+            
             <h4 class="movie-release-date"><span class="label label-info">Released</span> <%= @movie.release_date.to_formatted_s(:long) %></h4>
             <h4 class="movie-director"><span class="label label-info">Directed by</span> <%= @movie.director %></h4>
             <p class="movie-desc"><%= @movie.description %></p>
@@ -36,3 +41,20 @@
     </div>
 </div>
 
+<script>
+    $('.review-rating').raty({
+        readOnly: true,
+        score: function(){
+            return $(this).attr('data-score');
+        },
+        path: '/assets/'
+    });
+    
+    $('.average-review-rating').raty({
+        readOnly: true,
+        score: function(){
+            return $(this).attr('data-score');
+        },
+        path: '/assets/'
+    });
+</script>

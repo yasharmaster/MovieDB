@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
     before_action :find_movie
-    before_action :authenticate_user!, only: [:new, :create]
+    before_action :authenticate_user!, only: [:new, :edit]
     before_action :find_review, only: [:edit, :update, :destroy]
     
     def new

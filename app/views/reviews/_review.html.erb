@@ -1,7 +1,7 @@
 <div class="review">
-    <p class="review-rating"><%= review.rating %></p>
+    <div class="review-rating" data-score="<%= review.rating %>"></div>
     <p class="review-comment"><%= review.comment %></p>
-    <p>By <%= current_user.email %>, on <%= review.created_at %></p>
+    <p>By <%= review.user.email %>, on <%= review.created_at %></p>
     
     <% if user_signed_in? %>
         <% if review.user_id == current_user.id %>
