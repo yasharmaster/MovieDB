@@ -1,21 +1,27 @@
-<h2><%= @movie.title %></h2>
 
 <div class="row">
-    <h4 class="col-md-4"><strong>Category : </strong><%= @movie.category.name %></h4>
-    <h4 class="col-md-4"><strong>Released on </strong><%= @movie.release_date.to_formatted_s(:long) %></h4>
+    <div class="col-md-4">
+        <%= image_tag @movie.movie_img.url(:movie_show), class: "movie-show" %>
+    </div>
+    
+    <div class="col-md-8">
+        <div class="movie-info">
+            <h2 class="movie-title"><%= @movie.title %></h2>
+            <h3 class="movie-category"><span class="label label-primary"><%= @movie.category.name %></span></h3>
+            <h4 class="movie-release-date"><span class="label label-info">Released</span> <%= @movie.release_date.to_formatted_s(:long) %></h4>
+            <h4 class="movie-director"><span class="label label-info">Directed by</span> <%= @movie.director %></h4>
+            <p class="movie-desc"><%= @movie.description %></p>
+            <div class="movie-links btn-group">
+                <% if user_signed_in? %>
+                    <%# Nested if's because if someone has not signed in, current_user.id will be nil and it will throw an error %>
+                    <% if @movie.user_id == current_user.id %>
+                        <%= link_to "Edit", edit_movie_path(@movie), class: "btn btn-primary" %>
+                        <%= link_to "Delete", movie_path(@movie), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>
 
-<h4><strong>Directed by </strong><%= @movie.director %></h4>
 
-
-<p><%= @movie.description %></p>
-
-<div class="links btn-group">
-    <% if user_signed_in? %>
-        <%# Nested if's because if someone has not signed in, current_user.id will be nil and it will throw an error %>
-        <% if @movie.user_id == current_user.id %>
-            <%= link_to "Edit", edit_movie_path(@movie), class: "btn btn-primary" %>
-            <%= link_to "Delete", movie_path(@movie), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
-        <% end %>
-    <% end %>
-</div>
