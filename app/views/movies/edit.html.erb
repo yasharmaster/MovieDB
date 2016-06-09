@@ -4,6 +4,7 @@
 
   <%# Use select_tag to display dropdown of categories list populated in the controller %>
   <%= f.select :category_id, @categories %>
+  <%= f.file_field :movie_img %>
   <%= f.input :title, label: "Movie's Name" %>
   <%= f.input :description %>
   <%= f.input :director, label: "Director's Name" %>
