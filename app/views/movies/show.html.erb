@@ -24,4 +24,15 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-md-12">
+        <div class="reviews">
+            <h1>Reviews</h1>
+            <%= render @movie.reviews %>
+            <div>
+                <%= link_to "Add Review", new_movie_review_path(@movie), class: "btn btn-success" %>
+            </div>
+        </div>
+    </div>
+</div>
 
