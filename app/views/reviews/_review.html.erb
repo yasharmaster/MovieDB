@@ -1,5 +1,16 @@
 <div class="review">
     <p class="review-rating"><%= review.rating %></p>
     <p class="review-comment"><%= review.comment %></p>
-    <p>By <%= current_user.email %>, on <%= review.created_at %> </p>
+    <p>By <%= current_user.email %>, on <%= review.created_at %></p>
+    
+    <% if user_signed_in? %>
+        <% if review.user_id == current_user.id %>
+            <div class="btn-group">
+                <%= link_to "Edit", edit_movie_review_path(review.movie, review), class: "btn btn-primary" %>
+                <%= link_to "Delete", movie_review_path(review.movie, review),
+                                    method: :delete, data: { confirm: "Are you sure?" },
+                                    class: "btn btn-primary" %>
+            </div>
+        <% end %>
+    <% end %>
 </div>
