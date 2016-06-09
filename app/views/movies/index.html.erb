@@ -5,9 +5,9 @@
 <% else %>
     <div class="row">
         <% @movies.each do |movie| %>
-            <div class="col-md-3 movie-poster">
+            <div class="col-md-3 ">
                 <a href="/movies/ <%= movie.id %>">
-                    <%= image_tag movie.movie_img.url(:movie_index), class: "movie" %>
+                    <%= image_tag movie.movie_img.url(:movie_index), class: "movie movie-poster" %>
                 </a>
             </div>
         <% end %>
