@@ -12,11 +12,13 @@ class MoviesController < ApplicationController
 
     end
     
+    # new has a view file
     def new
         @movie = current_user.movies.build
         @categories = Category.all.map{ |c| [c.name, c.id] }
     end
     
+    # create doesn't have a view, it is responsible for changes in the database
     def create
         @movie = current_user.movies.build(movie_params)
         @movie.category_id = params[:category_id]
