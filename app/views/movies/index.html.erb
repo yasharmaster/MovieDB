@@ -1,14 +1,33 @@
-<h1 class="current-category"><%= params[:category] %></h1>
+ <% if params[:category]==nil %>
+    <div class="welcome-box col-md-6 col-md-offset-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Welcome to MovieDB!</h3>
+            </div>
+            <div class="panel-body">
+                <p>MovieDB is a portal for movie freaks. Here you can read reviews & gain information about popular movies around the globe. Movies can be listed as per their genres. Popular movies are listed below.</p>
+                <p>Don't forget to leave ratings and reviews for the movies that you have watched.</p>
+            </div>
+        </div>
+    </div>
+<%  end %>
+        
+<% if params[:category] != nil %>
+    <h1 class="current-category"><%= params[:category] %></h1>
+<%  end %>
+
 
 <% if @movies.count == 0 %>
     <h3>There are no movies in this category.</h3>
 <% else %>
-    <div class="row">
+    <div class="row col-md-12 col-lg-12">
         <% @movies.each do |movie| %>
-            <div class="col-md-3 ">
-                <a href="/movies/<%= movie.id %>">
-                    <%= image_tag movie.movie_img.url(:movie_index), class: "movie movie-poster" %>
-                </a>
+            <div class="col-md-3 col-sm-4 col-xs-6">
+                <div class="well">
+                    <a href="/movies/<%= movie.id %>">
+                        <%= image_tag movie.movie_img.url(:movie_index), class: "movie-poster" %>
+                    </a>
+                </div>
             </div>
         <% end %>
     </div>
