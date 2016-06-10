@@ -2,8 +2,10 @@
 <html>
 <head>
   <title>MovieDB</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/raty/2.7.0/jquery.raty.min.js' %>
+  <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
